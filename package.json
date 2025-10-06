@@ -24,9 +24,9 @@
     "build": "tsc",
     "dev": "tsc --watch",
     "format": "prettier nodes credentials --write",
-    "lint": "eslint --ext .js,.ts nodes credentials package.json",
+    "lint": "eslint nodes credentials package.json --ext .js,.ts",
     "lintfix": "eslint nodes credentials package.json --fix",
-    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js"
+    "prepublishOnly": "npm run build && npm run lint -- -c .eslintrc.prepublish.js"
   },
   "files": [
     "dist"
