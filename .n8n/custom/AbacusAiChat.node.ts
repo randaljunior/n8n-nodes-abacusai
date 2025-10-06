@@ -27,7 +27,6 @@ export class AbacusAiChat implements INodeType {
             },
         ],
         properties: [
-            // Input para o nome do modelo
             {
                 displayName: 'Model',
                 name: 'model',
@@ -36,7 +35,6 @@ export class AbacusAiChat implements INodeType {
                 required: true,
                 description: 'The model to use for the chat completion, e.g., gemini-2.5-pro',
             },
-            // Input para o prompt do usuário
             {
                 displayName: 'Prompt',
                 name: 'prompt',
@@ -48,7 +46,6 @@ export class AbacusAiChat implements INodeType {
                 },
                 description: 'The prompt to send to the chat model',
             },
-            // Opções Adicionais (como temperatura)
             {
                 displayName: 'Options',
                 name: 'options',
@@ -108,10 +105,8 @@ export class AbacusAiChat implements INodeType {
                     max_tokens: options.maxTokens,
                 };
 
-                // Use o helper httpRequest do n8n para fazer a chamada
                 const response = await this.helpers.httpRequest({
                     method: 'POST',
-                    // IMPORTANTE: Substitua pelo endpoint correto da documentação do RouteLLM
                     url: 'https://api.abacus.ai/v1/route-llm/chat/completions',
                     headers: {
                         'Authorization': `Bearer ${credentials.apiKey}`,
@@ -121,7 +116,6 @@ export class AbacusAiChat implements INodeType {
                     json: true,
                 });
 
-                // Adiciona a resposta completa da API ao item de saída
                 const executionData = this.helpers.constructExecutionMetaData(
                     this.helpers.returnJsonArray(response as any),
                     { itemData: { item: i } },
