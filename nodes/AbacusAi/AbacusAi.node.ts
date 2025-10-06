@@ -206,9 +206,10 @@ export class AbacusAi implements INodeType {
 				}
 			} catch (error) {
 				if (this.continueOnFail()) {
+					const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
 					returnData.push({
 						json: {
-							error: error.message,
+							error: errorMessage,
 						},
 						pairedItem: { item: i },
 					});
