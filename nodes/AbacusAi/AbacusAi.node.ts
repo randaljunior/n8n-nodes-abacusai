@@ -18,8 +18,8 @@ export class AbacusAi implements INodeType {
 		defaults: {
 			name: 'Abacus AI',
 		},
-		inputs: [NodeConnectionType.Main],
-		outputs: [NodeConnectionType.Main],
+			inputs: ['main'], // Corrigido
+			outputs: ['main'], // Corrigido
 		credentials: [
 			{
 				name: 'abacusAiApi',
